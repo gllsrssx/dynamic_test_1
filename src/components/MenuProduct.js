@@ -1,8 +1,8 @@
 import PropTypes from "prop-types";
-import {Col, Row} from "react-bootstrap";
+import { Col, Row } from "react-bootstrap";
 
 function ProductSize(props) {
-    const {product} = props;
+    const { product } = props;
     if (!product.size) return;
 
     return (
@@ -13,7 +13,7 @@ function ProductSize(props) {
 }
 
 function ProductNote(props) {
-    const {product} = props;
+    const { product } = props;
     if (!product.note) return;
 
     return (
@@ -25,8 +25,32 @@ function ProductNote(props) {
     );
 }
 
+// function ProductPercentage(props) {
+//     const { product } = props;
+//     if (!product.percentage) return;
+
+//     return (
+//         <span className="fs-6 text-primary">
+//             &nbsp;({product.percentage}%)
+//         </span>
+//     );
+// }
+
+// function ProductType(props) {
+//     const { product } = props;
+//     if (!product.type) return;
+
+//     return (
+//         <Row className="fs-6 text-primary">
+//             <Col>
+//                 {product.type}
+//             </Col>
+//         </Row>
+//     );
+// }
+
 export function MenuProduct(props) {
-    const {product} = props;
+    const { product } = props;
     if (!product?.name) return;
 
     return (
@@ -34,13 +58,15 @@ export function MenuProduct(props) {
             <Row className="fs-3">
                 <Col>
                     {product.name}
-                    <ProductSize product={product}/>
+                    <ProductSize product={product} />
+                    {/* <ProductPercentage product={product} /> */}
                 </Col>
                 <Col>
                     {product.price} &euro;
                 </Col>
             </Row>
-            <ProductNote product={product}/>
+            <ProductNote product={product} />
+            {/* <ProductType product={product} /> */}
         </div>
     );
 }
@@ -52,6 +78,8 @@ MenuProduct.propTypes = {
         price: PropTypes.number.isRequired,
         size: PropTypes.number,
         note: PropTypes.string,
+        percentage: PropTypes.string,
+        type: PropTypes.string,
     }).isRequired,
 
 }
