@@ -4,7 +4,7 @@ import { Col, Row } from "react-bootstrap";
 function ProductSize(props) {
     const { product } = props;
     if (!product.size) return;
-
+    if (product.percentage) return;
     return (
         <span className="fs-6 text-primary">
             &nbsp;({product.size}cl)
@@ -25,17 +25,26 @@ function ProductNote(props) {
     );
 }
 
-// function ProductPercentage(props) {
-//     const { product } = props;
-//     if (!product.percentage) return;
-
-//     return (
-//         <span className="fs-6 text-primary">
-//             &nbsp;({product.percentage}%)
-//         </span>
-//     );
-// }
-
+function ProductPercentage(props) {
+    const { product } = props;
+    if (!product.percentage) return;
+    if (product.size) return;
+    return (
+        <span className="fs-6 text-primary">
+            &nbsp;({product.percentage}%)
+        </span>
+    );
+}
+function ProductSizePercentage(props) {
+    const { product } = props;
+    if (!product.size) return;
+    if (!product.percentage) return;
+    return (
+        <span className="fs-6 text-primary">
+            &nbsp;({product.size}cl - {product.percentage}%)
+        </span>
+    );
+}
 // function ProductType(props) {
 //     const { product } = props;
 //     if (!product.type) return;
@@ -59,7 +68,8 @@ export function MenuProduct(props) {
                 <Col>
                     {product.name}
                     <ProductSize product={product} />
-                    {/* <ProductPercentage product={product} /> */}
+                    <ProductPercentage product={product} />
+                    <ProductSizePercentage product={product} />
                 </Col>
                 <Col>
                     {product.price} &euro;
