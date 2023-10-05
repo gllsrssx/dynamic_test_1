@@ -1,15 +1,28 @@
 import PropTypes from "prop-types";
 import { Col, Row } from "react-bootstrap";
 
-function ProductSize(props) {
+function ProductSizePercentage(props) {
     const { product } = props;
-    if (!product.size) return;
-    if (product.percentage) return;
-    return (
-        <span className="fs-6 text-primary">
-            &nbsp;({product.size}cl)
-        </span>
-    );
+
+    if (product.size && product.percentage)
+        return (
+            <span className="fs-6 text-primary">
+                &nbsp;({product.size}cl - {product.percentage}%)
+            </span>
+        );
+    else if (product.size)
+        return (
+            <span className="fs-6 text-primary">
+                &nbsp;({product.size}cl)
+            </span>
+        );
+    else if (product.percentage)
+        return (
+            <span className="fs-6 text-primary">
+                &nbsp;({product.percentage}%)
+            </span>
+        );
+    else return;
 }
 
 function ProductNote(props) {
@@ -25,26 +38,6 @@ function ProductNote(props) {
     );
 }
 
-function ProductPercentage(props) {
-    const { product } = props;
-    if (!product.percentage) return;
-    if (product.size) return;
-    return (
-        <span className="fs-6 text-primary">
-            &nbsp;({product.percentage}%)
-        </span>
-    );
-}
-function ProductSizePercentage(props) {
-    const { product } = props;
-    if (!product.size) return;
-    if (!product.percentage) return;
-    return (
-        <span className="fs-6 text-primary">
-            &nbsp;({product.size}cl - {product.percentage}%)
-        </span>
-    );
-}
 // function ProductType(props) {
 //     const { product } = props;
 //     if (!product.type) return;
@@ -67,8 +60,6 @@ export function MenuProduct(props) {
             <Row className="fs-3">
                 <Col>
                     {product.name}
-                    <ProductSize product={product} />
-                    <ProductPercentage product={product} />
                     <ProductSizePercentage product={product} />
                 </Col>
                 <Col>
@@ -91,5 +82,4 @@ MenuProduct.propTypes = {
         percentage: PropTypes.string,
         type: PropTypes.string,
     }).isRequired,
-
 }
