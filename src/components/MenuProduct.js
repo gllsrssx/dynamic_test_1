@@ -38,19 +38,6 @@ function ProductNote(props) {
     );
 }
 
-// function ProductType(props) {
-//     const { product } = props;
-//     if (!product.type) return;
-
-//     return (
-//         <Row className="fs-6 text-primary">
-//             <Col>
-//                 {product.type}
-//             </Col>
-//         </Row>
-//     );
-// }
-
 export function MenuProduct(props) {
     const { product } = props;
     if (!product?.name) return;
@@ -67,7 +54,6 @@ export function MenuProduct(props) {
                 </Col>
             </Row>
             <ProductNote product={product} />
-            {/* <ProductType product={product} /> */}
         </div>
     );
 }
