@@ -7,7 +7,7 @@ function ProductSizePercentage(props) {
     if (product.size && product.percentage)
         return (
             <span className="fs-6 text-primary">
-                &nbsp;({product.size}cl - {product.percentage}%)
+                &nbsp;({product.size}cl - {product.percentage.toFixed(2)}%)
             </span>
         );
     else if (product.size)
@@ -19,7 +19,7 @@ function ProductSizePercentage(props) {
     else if (product.percentage)
         return (
             <span className="fs-6 text-primary">
-                &nbsp;({product.percentage}%)
+                &nbsp;({product.percentage.toFixed(2)}%)
             </span>
         );
     else return;
